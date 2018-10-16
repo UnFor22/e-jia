@@ -3,8 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import heads from './components/header.vue'
+import tabs from './components/footer'
 
 Vue.config.productionTip = false
+Vue.component('heads', heads);
+Vue.component('tabs', tabs);
 
 /* eslint-disable no-new */
 new Vue({

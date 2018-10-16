@@ -2,17 +2,17 @@
     <div id="index-container">
         <div class="header clearfix">
             <div class="header-left fll">
-                <img src="../assets/logo.png" alt="" style="width:130px">
+                <img class="header-img" src="../assets/logo.png" alt="" style="width:130px">
             </div>
-            <router-link to='/' class="header-right flr">登录</router-link>
+            <router-link to='/login' class="header-right flr">登录</router-link>
         </div>
         <div class="swiper">
-            <mt-swipe :auto="4000" v-for="item in listImg" :key="item.id" class="swiper-wrap">
-                <mt-swipe-item>
-                    <router-link to='/'>
-                        <img :src="item.url" alt="" style="width:7.2rem">
-                    </router-link>
-                    <div class="img-title">{{item.title}}</div>
+            <mt-swipe :auto="4000"  class="swiper-wrap">
+                <mt-swipe-item v-for="item in listImg" :key="item.id">
+                    <router-link to='/login'>
+                        <img :src="item.url" alt="121" style="width:7.2rem" class="swipe-img">
+                        <div class="img-title">{{item.title}}</div>
+                    </router-link> 
                 </mt-swipe-item>
             </mt-swipe>    
         </div>
@@ -40,7 +40,7 @@
                     </li>
                     <li class="nav-wrap">
                         <div class="nav-item">
-                            <router-link to="/">
+                            <router-link to="/" class="nav-item">
                                 <img src="../assets/icon_04.png" alt="">
                                 <span>党建一点通</span>
                             </router-link>
@@ -60,6 +60,27 @@
                     </li>
                 </ul>
         </div>
+        <div class="middle-logo">
+            <img src="../assets/banner01.png" alt="">
+        </div>
+        <div class="footer-nav">
+            <div class="footer-nav-wrap">
+                <div class="f-n-l"></div>
+                <div class="f-n-r">
+                    <ul>
+                        <li>
+                            <router-link to="/"></router-link>
+                            <router-link to="/"></router-link>
+                        </li>
+                        <li>
+                            <router-link to="/"></router-link>
+                            <router-link to="/"></router-link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <tabs></tabs>
     </div>
 </template>
 
@@ -68,8 +89,8 @@
     import {Swipe, SwipeItem} from 'mint-ui'
     import 'mint-ui/lib/style.css'
 
-    // Vue.component(Swipe.name, Swipe);
-    // Vue.component(SwipeItem.name, SwipeItem);
+    // Vue.component('mt-swipe', Swipe);
+    // Vue.component('mt-swipe-item', SwipeItem);
     
     export default {
         components: {
@@ -80,22 +101,22 @@
             return {
                 listImg: [
                     {
-                        url: '../assets/banner.png',
+                        url: '../../static/imgs/banner.png',
                         id:0,
                         title:'讲形势指方向-一图解读习近平'
                     },
                     {
-                        url: '../assets/banner.png',
+                        url: '../../static/imgs/banner.png',
                         id:1,
                         title: '校长探针在信息工程学院作学习中央31号文件报告'
                     },
                     {
-                        url: '../assets/banner.png',
+                        url: '../../static/imgs/banner.png',
                         id:2,
                         title: '水調歌頭—慶祝黨的十九大勝利召開'
                     },
                     {
-                        url: '../assets/banner.png',
+                        url: '../../static/imgs/banner.png',
                         id:3,
                         title:'讲形势指方向——图解读习近平这次对省部级干部说了啥'
                     }
@@ -107,14 +128,45 @@
 </script>
 
 <style scoped lang = 'scss'>
-@import '../style/index.scss';
+
+.header {
+    z-index: 998;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 7.2rem;
+    height: 1.13rem;
+    background: #c50206;
+    line-height: 1.13rem;
+    padding: 0 0.48rem;
+    box-sizing: border-box;
+    .header-left {
+        padding: 0.2rem;
+        img {
+            display: block;
+        }
+    }
+    
+    .header-right{
+        font-size: 17px;
+        font-weight: 300;
+        color: #fff;
+    }
+}
 .swiper{
     position: relative;
+    margin-top: 1.13rem;
     .swiper-wrap {
-       width: 2.92rem;
-
+        height: 2.92rem;
+        .swipe-img{
+            height: 2.92rem;
+            display: block;
+        }
        .img-title {
-           font-size: 14px;
+           padding: 0.1rem;
+           font-size: 12px;
+           font-weight: 300;
            color: #fff;
            position: absolute;
            bottom: 0;
@@ -128,7 +180,6 @@
     height: 3.79rem;
     background: url('../assets/bt_bg.png') no-repeat;
     background-size: 100%;
-    text-align: center;
     
     .nav-wrap {
         display: flex;
@@ -141,10 +192,55 @@
         a {
             img {
                 width: 0.9rem;
-                margin: 0.3rem 0 0.18rem;
+                margin: 0.3rem 0 0.14rem;
+            }
+            span {
+                display: block;
             }
             color: #333; 
         }
     }
 }   
+.middle-logo {
+    img {
+        height: 1.73rem;
+        width: 100%;
+        vertical-align: middle;
+    } 
+}
+.footer-nav {
+    height: 3.16rem;
+    background: url('../assets/tese.png') no-repeat;
+    background-size: 100%;
+    margin-bottom: 1.38rem;
+    .footer-nav-wrap {
+        display: flex;
+        .f-n-l {
+            flex: 1;
+            height: 3.16rem;
+            /* background: #f00; */
+        }
+        .f-n-r {
+            flex: 2;
+            height: 3.16rem;
+            /* background: #0f0; */
+            ul {
+                height: 100%;
+                li {
+                    height: 50%;
+                    display: flex;
+                    a {
+                        flex: 1;
+                        width: 50%;
+                        height: 100%;
+                        /* border: 1px solid #000; */
+                    }
+                }
+            }
+            
+            
+        }
+    }
+    
+}
 </style>

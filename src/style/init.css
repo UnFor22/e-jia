@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-.clearfix::before,.clearfix::after{
+.clearfix::after{
     display: block;
     overflow: hidden;
     content: " ";
