@@ -5,7 +5,10 @@ import App from './App'
 import router from './router'
 import heads from './components/header.vue'
 import tabs from './components/footer'
+import {$axios} from './utils/index.js'
+import './assets/iconfont/iconfont.css'
 
+Vue.prototype.$axios = $axios
 Vue.config.productionTip = false
 Vue.component('heads', heads);
 Vue.component('tabs', tabs);

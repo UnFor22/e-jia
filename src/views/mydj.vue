@@ -17,28 +17,21 @@
                     <router-link to='/'>
                         <img src="/static/imgs/person.png" alt="" class="img-left fll">
                         <span class="fll">个人信息</span>
-                        <div class="flr img-right">
-                            <img src="/static/imgs/right.png" alt="" class="">
-                        </div>
+                        <img src="/static/imgs/right.png" alt="" class="img-right">
                     </router-link>
                 </div>
                 <div class="dj-user-item clearfix">
                     <router-link to='/'>
                         <img src="/static/imgs/icon_01.png" alt="" class="img-left fll">
                         <span class="fll">个人量化积分</span>
-                        <div class="flr img-right">
-                            <img src="/static/imgs/right.png" alt="" class="">
-                        </div>
+                        <img src="/static/imgs/right.png" alt="" class="img-right">
                     </router-link>
                 </div>
                 <div class="dj-user-item clearfix">
                     <router-link to='/'>
                         <img src="/static/imgs/xgmm.png" alt="" class="img-left fll">
                         <span class="fll">修改密码</span>
-                        <div class="flr img-right">
-                            <img src="/static/imgs/right.png" alt="" class="">
-                        </div>
-                        
+                        <img src="/static/imgs/right.png" alt="" class="img-right">  
                     </router-link> 
                 </div>
             </div>
@@ -97,8 +90,6 @@
             a{
                 .img-left {
                     width: 0.63rem;
-                    display: block;
-                    // margin: auto 0;
                 }
                 span{
                     color: #666;
@@ -109,11 +100,10 @@
                     line-height: 0.64rem;
                 }
                 .img-right {
-                    height: 0.63rem;
-                    line-height: 0.63rem;
-                    img {
-                        width: 0.16rem;
-                    }
+                    // height: 0.63rem;
+                    float: right;
+                    height: 0.25rem;
+                    margin-top: 0.19rem;
                 }
             } 
         }

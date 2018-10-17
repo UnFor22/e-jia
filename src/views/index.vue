@@ -8,9 +8,9 @@
         </div>
         <div class="swiper">
             <mt-swipe :auto="4000"  class="swiper-wrap">
-                <mt-swipe-item v-for="item in listImg" :key="item.id">
+                <mt-swipe-item v-for="item in tableData" :key="item.id">
                     <router-link to='/login'>
-                        <img :src="item.url" alt="121" style="width:7.2rem" class="swipe-img">
+                        <img :src="item.imgUrl" alt="121" style="width:7.2rem" class="swipe-img">
                         <div class="img-title">{{item.title}}</div>
                     </router-link> 
                 </mt-swipe-item>
@@ -20,19 +20,19 @@
                 <ul>
                     <li class="nav-wrap">
                         <div class="nav-item">
-                            <router-link to="/">
+                            <router-link to="/news">
                                 <img src="../assets/icon_01.png" alt="">
                                 <span>信工新闻眼</span>
                             </router-link>
                         </div>
                         <div class="nav-item">
-                            <router-link to="/">
+                            <router-link to="/plamlife">
                                 <img src="../assets/icon_02.png" alt="">
                                 <span>掌上组织生活</span>
                             </router-link>
                         </div>
                         <div class="nav-item">
-                            <router-link to="/">
+                            <router-link to="/cloudinter">
                                 <img src="../assets/icon_03.png" alt="">
                                 <span>党员云互动</span>
                             </router-link>
@@ -40,19 +40,19 @@
                     </li>
                     <li class="nav-wrap">
                         <div class="nav-item">
-                            <router-link to="/" class="nav-item">
+                            <router-link to="/through" class="nav-item">
                                 <img src="../assets/icon_04.png" alt="">
                                 <span>党建一点通</span>
                             </router-link>
                         </div>
                         <div class="nav-item">
-                            <router-link to="/">
+                            <router-link to="/identity">
                                 <img src="../assets/icon_05.png" alt="">
                                 <span>党员亮身份</span>
                             </router-link>
                         </div>
                         <div class="nav-item">
-                            <router-link to="/">
+                            <router-link to="/dstoday">
                                 <img src="../assets/icon_06.png" alt="">
                                 <span>党史上的今天</span>
                             </router-link>
@@ -69,12 +69,12 @@
                 <div class="f-n-r">
                     <ul>
                         <li>
-                            <router-link to="/"></router-link>
-                            <router-link to="/"></router-link>
+                            <router-link to="/wheneverstudy"></router-link>
+                            <router-link to="/whenevershot"></router-link>
                         </li>
                         <li>
-                            <router-link to="/"></router-link>
-                            <router-link to="/"></router-link>
+                            <router-link to="/systembuild"></router-link>
+                            <router-link to="/featureavtive"></router-link>
                         </li>
                     </ul>
                 </div>
@@ -99,29 +99,19 @@
         },
         data (){
             return {
-                listImg: [
-                    {
-                        url: '../../static/imgs/banner.png',
-                        id:0,
-                        title:'讲形势指方向-一图解读习近平'
-                    },
-                    {
-                        url: '../../static/imgs/banner.png',
-                        id:1,
-                        title: '校长探针在信息工程学院作学习中央31号文件报告'
-                    },
-                    {
-                        url: '../../static/imgs/banner.png',
-                        id:2,
-                        title: '水調歌頭—慶祝黨的十九大勝利召開'
-                    },
-                    {
-                        url: '../../static/imgs/banner.png',
-                        id:3,
-                        title:'讲形势指方向——图解读习近平这次对省部级干部说了啥'
-                    }
-                ]  
+                tableData: [],
             }
+        },
+        methods: {
+             getData(){
+                this.$axios.get('/carousel/carouselList.do?type=0').then(res => {
+                    console.log(res)
+                    this.tableData = res.rows
+                })
+            } 
+        },
+        created(){
+            this.getData()
         }
     }
     
@@ -158,9 +148,9 @@
     position: relative;
     margin-top: 1.13rem;
     .swiper-wrap {
-        height: 2.92rem;
+        height: 3.8rem;
         .swipe-img{
-            height: 2.92rem;
+            height: 3.8rem;
             display: block;
         }
        .img-title {
