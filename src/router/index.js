@@ -18,6 +18,16 @@ const components = {
   Whenevershot:()=>import ('@/views/whenevershot.vue'),
   Systembuild:()=>import ('@/views/systembuild.vue'),
   Featureavtive:()=>import ('@/views/featureavtive.vue'),
+  Newsdetail:()=>import ('@/views/newsdetail.vue'),
+  Politystudy:()=>import ('@/views/politystudy.vue'),
+  Studydetail:()=>import ('@/views/studydetail.vue'),
+  Throughdetail:()=>import ('@/views/throughdetail.vue'),
+  Identitydetail:()=>import ('@/views/identitydetail.vue'),
+  Studydetail1:()=>import ('@/views/studydetail1.vue'),
+  Shotdetail:()=>import ('@/views/shotdetail.vue'),
+  Builddetail:()=>import ('@/views/builddetail.vue'),
+  Activedetail:()=>import ('@/views/activedetail.vue'),
+  Noticedetail:()=>import ('@/views/noticedetail.vue'),
 }
 
 export default new Router({
@@ -59,6 +69,14 @@ export default new Router({
       path:'/news',
       name: 'news',
       component: components.News,
+      meta: {
+        title: '信工新闻眼'
+      }
+    },
+    {
+      path:'/newsdetail',
+      name: 'newsdetail',
+      component: components.Newsdetail,
       meta: {
         title: '信工新闻眼'
       }
@@ -135,5 +153,86 @@ export default new Router({
         title: '特色活动'
       }
     },
+    {
+      path:'/studydetail1',
+      name: 'studydetail1',
+      component: components.Studydetail1,
+      meta: {
+        title: '随时随地学'
+      }
+    },
+    {
+      path:'/politystudy',
+      name: 'politystudy',
+      component: components.Politystudy,
+      meta: {
+        title: '政治学习'
+      }
+    },
+    {
+      path:'/studydetail',
+      name: 'studydetail',
+      component: components.Studydetail,
+      meta: {
+        title: '政治学习'
+      }
+    },
+    {
+      path:'/throughdetail',
+      name: 'throughdetail',
+      component: components.Throughdetail,
+      meta: {
+        title: '党建一点通'
+      }
+    },
+    {
+      path:'/identitydetail',
+      name: 'identitydetail',
+      component: components.Identitydetail,
+      meta: {
+        title: '党员亮身份'
+      }
+    },
+    {
+      path:'/studydetail1',
+      name: 'studydetail1',
+      component: components.Studydetail1,
+      meta: {
+        title: '随时随地学'
+      }
+    },
+    {
+      path:'/shotdetail',
+      name: 'shotdetail',
+      component: components.Shotdetail,
+      meta: {
+        title: '随时随地拍'
+      }
+    },
+    {
+      path:'/activedetail',
+      name: 'activedetail',
+      component: components.Activedetail,
+      meta: {
+        title: '特色活动'
+      }
+    },
+    {
+      path:'/builddetail',
+      name: 'builddetail',
+      component: components.Builddetail,
+      meta: {
+        title: '制度建设'
+      }
+    },
+    {
+      path:'/noticedetail',
+      name: 'noticedetail',
+      component: components.Noticedetail,
+      meta: {
+        title: '通知早知道'
+      }
+    },
+   
   ]
 })

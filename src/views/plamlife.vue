@@ -3,7 +3,7 @@
         <heads></heads>
         <img class="plam-img" src="/static/imgs/banner1.png" alt="">
         <div class="plam-wrap clearfix">
-            <router-link to='/'>
+            <router-link to='/politystudy'>
                 <div class="plam-item">
                     <img src="/static/imgs/icon1.png" alt="">
                     <span>政治学习</span>

@@ -18,6 +18,8 @@ const xhr = {
                     router.push('/login')
                 }
                 resolve(res.data)
+            }).catch(err => {
+                reject(err)
             })
         })
     },
@@ -30,7 +32,8 @@ const xhr = {
             })
         })
     },
-   
 }
+
+const sc = this.$route;
 
 export const $axios = xhr

@@ -3,14 +3,14 @@
         <heads></heads>
         <div class="whenevershot-wrap1">
             <div class="whenevershot-wrap cleafix" v-for='item in formData' :key="item.newsId">
-                <router-link to='/'>
+                <div @click="handleClick(item.newsId)">
                     <div class="ws-item">
                         <img :src="item.pic" alt="">
                         <div class="ws-title">
                             {{item.title}}
                         </div>
                     </div>
-                </router-link>
+                </div>
                 
             </div>
         </div>
@@ -31,6 +31,9 @@
                     console.log(res)
                     this.formData = res.rows
                 })
+            },
+            handleClick(newsId){
+                this.$router.push(`/shotdetail?id=${newsId}`)
             }
         },
         created(){

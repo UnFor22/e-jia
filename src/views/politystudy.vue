@@ -1,17 +1,15 @@
 <template>
-    <div>
+    <div class="news">
         <heads></heads>
-        <contents></contents>
+        <contents></contents>    
     </div>
 </template>
 
 <script>
-    export default {
    
-    }
    
 </script>
 
-<style scoped >
-   
+<style scoped>
+    
 </style>

@@ -31,7 +31,9 @@
             font-weight: 400;
             display: block;
             height: 0.88rem;
+            width: 7.2rem;
             line-height: 0.88rem;
+            text-align: center;
         }
     }
 </style>
