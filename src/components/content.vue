@@ -75,14 +75,11 @@
                 break;
                 
                 }
-                
-                
-                
-
+            
                 this.$axios.get(`${this.rqr}`).then(res => {
                     console.log(res)
                     this.tableData = res.rows
-                    this.newsId = res.rows.newsId
+                    // this.newsId = res.rows.newsId
                 })
             },
             handleClick(newsId){

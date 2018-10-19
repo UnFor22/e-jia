@@ -4,30 +4,34 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const components = {
-  Index: ()=>import ('@/views/index.vue'),
-  Login: ()=>import ('@/views/login.vue'),
-  Notice: ()=>import ('@/views/notice.vue'),
-  Mydj:()=>import ('@/views/mydj.vue'),
-  News:()=>import ('@/views/news.vue'),
-  Plamlife:()=>import ('@/views/plamlife.vue'),
-  Cloudinter:()=>import ('@/views/cloudinter.vue'),
-  Through:()=>import ('@/views/through.vue'),
-  Identity:()=>import ('@/views/identity.vue'),
-  Dstoday:()=>import ('@/views/dstoday.vue'),
-  Wheneverstudy:()=>import ('@/views/wheneverstudy.vue'),
-  Whenevershot:()=>import ('@/views/whenevershot.vue'),
-  Systembuild:()=>import ('@/views/systembuild.vue'),
-  Featureavtive:()=>import ('@/views/featureavtive.vue'),
-  Newsdetail:()=>import ('@/views/newsdetail.vue'),
-  Politystudy:()=>import ('@/views/politystudy.vue'),
-  Studydetail:()=>import ('@/views/studydetail.vue'),
-  Throughdetail:()=>import ('@/views/throughdetail.vue'),
-  Identitydetail:()=>import ('@/views/identitydetail.vue'),
-  Studydetail1:()=>import ('@/views/studydetail1.vue'),
-  Shotdetail:()=>import ('@/views/shotdetail.vue'),
-  Builddetail:()=>import ('@/views/builddetail.vue'),
-  Activedetail:()=>import ('@/views/activedetail.vue'),
-  Noticedetail:()=>import ('@/views/noticedetail.vue'),
+  Index: ()=>import ('@/views/index/index.vue'),
+  Login: ()=>import ('@/views/index/login.vue'),
+  Notice: ()=>import ('@/views/notice/notice.vue'),
+  Mydj:()=>import ('@/views/mydj/mydj.vue'),
+  News:()=>import ('@/views/news/news.vue'),
+  Plamlife:()=>import ('@/views/plamlife/plamlife.vue'),
+  Cloudinter:()=>import ('@/views/cloudinter/cloudinter.vue'),
+  Through:()=>import ('@/views/through/through.vue'),
+  Identity:()=>import ('@/views/identity/identity.vue'),
+  Dstoday:()=>import ('@/views/dstoday/dstoday.vue'),
+  Wheneverstudy:()=>import ('@/views/wheneverstudy/wheneverstudy.vue'),
+  Whenevershot:()=>import ('@/views/whenevershot/whenevershot.vue'),
+  Systembuild:()=>import ('@/views/systembuild/systembuild.vue'),
+  Featureavtive:()=>import ('@/views/avtive/featureavtive.vue'),
+  Newsdetail:()=>import ('@/views/news/newsdetail.vue'),
+  Politystudy:()=>import ('@/views/plamlife/politystudy.vue'),
+  Studydetail:()=>import ('@/views/plamlife/studydetail.vue'),
+  Throughdetail:()=>import ('@/views/through/throughdetail.vue'),
+  Identitydetail:()=>import ('@/views/identity/identitydetail.vue'),
+  Studydetail1:()=>import ('@/views/wheneverstudy/studydetail1.vue'),
+  Shotdetail:()=>import ('@/views/whenevershot/shotdetail.vue'),
+  Builddetail:()=>import ('@/views/systembuild/builddetail.vue'),
+  Activedetail:()=>import ('@/views/avtive/activedetail.vue'),
+  Noticedetail:()=>import ('@/views/notice/noticedetail.vue'),
+  Swipedetail:()=>import ('@/views/swiper/swipedetail.vue'),
+  Userinfo:()=>import ('@/views/mydj/userinfo.vue'),
+  Integral:()=>import ('@/views/mydj/integral.vue'),
+  Integraldetail:()=>import ('@/views/mydj/integraldetail.vue'),
 }
 
 export default new Router({
@@ -231,6 +235,38 @@ export default new Router({
       component: components.Noticedetail,
       meta: {
         title: '通知早知道'
+      }
+    },
+    {
+      path:'/swipedetail',
+      name: 'swipedetail',
+      component: components.Swipedetail,
+      meta: {
+        title: '通知早知道'
+      }
+    },
+    {
+      path:'/userinfo',
+      name: 'userinfo',
+      component: components.Userinfo,
+      meta: {
+        title: '个人信息'
+      }
+    },
+    {
+      path:'/integral',
+      name: 'integral',
+      component: components.Integral,
+      meta: {
+        title: '个人量化积分'
+      }
+    },
+    {
+      path:'/integraldetail',
+      name: 'integraldetail',
+      component: components.Integraldetail,
+      meta: {
+        title: '积分明细'
       }
     },
    

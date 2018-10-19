@@ -1,8 +1,6 @@
 <template>
-    <div class="notice">
-        <heads></heads>
-        <contents></contents>   
-        <tabs></tabs>
+    <div>
+
     </div>
 </template>
 

@@ -97,9 +97,23 @@
                     margin: 0 auto;
                 }
             }
+            h4 {
+                font-size: 18px;
+                color: #000;
+                font-weight: 500;
+                line-height: 1.2;
+                margin: 0.2rem 0;
+            }
+            h5 {
+                font-size: 14px;
+                margin: 0.1rem 0;
+                font-weight: 500;
+                line-height: 1.2;
+            }
             p:first-child {
                 text-indent: 0;
             }
+
         }
     }
 }

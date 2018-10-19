@@ -4,13 +4,13 @@
         <heads></heads>
         <div class="login-logo">
             <div class="login-logo-wrap">
-                <img src="../assets/logo.png" style="height:1rem" alt="">
+                <img src="/static/logo.png" style="height:1rem" alt="">
             </div>
         </div>
-        <form action="" class="login-form">
-            <input type="text" placeholder="身份证号" class="login-form-item">
-            <input type="password" placeholder="密码" class="login-form-item">
-            <input type="button" value="登录" class="login-button">
+        <form action="" method="post" class="login-form" >
+            <input type="text" placeholder="身份证号" class="login-form-item" v-model="formData.id_card">
+            <input type="password" placeholder="密码" class="login-form-item" v-model="formData.password" @keyup.enter="handleLogin">
+            <input type="button" value="登录" @click="handleLogin" class="login-button">
         </form>
     </div>
    
@@ -18,7 +18,31 @@
 
 <script>
     export default {
-        
+        data() {
+            return {
+                formData:{
+                    id_card: '',
+                    password: '',
+                }
+            }
+        },
+        methods: {
+            handleLogin(){
+                this.$axios.post('/user/userLogin.do',this.formData).then(res => {
+                    if(res.code == 1){
+                        console.log(res)
+                        this.$store.commit('IS_LOGIN',res)
+                        // console.log(this.$store.state.userinfo)
+                        // this.$MessageBox({title: '提示', message: '登录成功', showConfirmButton:false});
+                        setTimeout(()=>{
+                            this.$router.push('/mydj')
+                        },800)  
+                    }else {
+
+                    }
+                })
+            }
+        }
     }
 </script>
 

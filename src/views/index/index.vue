@@ -2,17 +2,17 @@
     <div id="index-container">
         <div class="header clearfix">
             <div class="header-left fll">
-                <img class="header-img" src="../assets/logo.png" alt="" style="width:130px">
+                <img class="header-img" src="../../assets/logo.png" alt="" style="width:130px">
             </div>
             <router-link to='/login' class="header-right flr">登录</router-link>
         </div>
         <div class="swiper">
             <mt-swipe :auto="4000"  class="swiper-wrap">
                 <mt-swipe-item v-for="item in tableData" :key="item.id">
-                    <router-link to='/login'>
+                    <div @click="handleClick(item.priority,item.url)">
                         <img :src="item.imgUrl" alt="121" style="width:7.2rem" class="swipe-img">
                         <div class="img-title">{{item.title}}</div>
-                    </router-link> 
+                    </div> 
                 </mt-swipe-item>
             </mt-swipe>    
         </div>
@@ -21,19 +21,19 @@
                     <li class="nav-wrap">
                         <div class="nav-item">
                             <router-link to="/news">
-                                <img src="../assets/icon_01.png" alt="">
+                                <img src="../../assets/icon_01.png" alt="">
                                 <span>信工新闻眼</span>
                             </router-link>
                         </div>
                         <div class="nav-item">
                             <router-link to="/plamlife">
-                                <img src="../assets/icon_02.png" alt="">
+                                <img src="../../assets/icon_02.png" alt="">
                                 <span>掌上组织生活</span>
                             </router-link>
                         </div>
                         <div class="nav-item">
                             <router-link to="/cloudinter">
-                                <img src="../assets/icon_03.png" alt="">
+                                <img src="../../assets/icon_03.png" alt="">
                                 <span>党员云互动</span>
                             </router-link>
                         </div>
@@ -41,19 +41,19 @@
                     <li class="nav-wrap">
                         <div class="nav-item">
                             <router-link to="/through" class="nav-item">
-                                <img src="../assets/icon_04.png" alt="">
+                                <img src="../../assets/icon_04.png" alt="">
                                 <span>党建一点通</span>
                             </router-link>
                         </div>
                         <div class="nav-item">
                             <router-link to="/identity">
-                                <img src="../assets/icon_05.png" alt="">
+                                <img src="../../assets/icon_05.png" alt="">
                                 <span>党员亮身份</span>
                             </router-link>
                         </div>
                         <div class="nav-item">
                             <router-link to="/dstoday">
-                                <img src="../assets/icon_06.png" alt="">
+                                <img src="../../assets/icon_06.png" alt="">
                                 <span>党史上的今天</span>
                             </router-link>
                         </div>
@@ -61,7 +61,7 @@
                 </ul>
         </div>
         <div class="middle-logo">
-            <img src="../assets/banner01.png" alt="">
+            <img src="../../assets/banner01.png" alt="">
         </div>
         <div class="footer-nav">
             <div class="footer-nav-wrap">
@@ -108,7 +108,28 @@
                     console.log(res)
                     this.tableData = res.rows
                 })
-            } 
+            },
+            handleClick(priority,url){
+                let tr =''
+                console.log(priority)
+                switch(priority)
+                {
+                case 7:
+                    tr = `/studydetail1?id=${url}`
+                break;
+                case 1:
+                    tr = `/newsdetail?id=${url}`
+                break;
+                case 4:
+                    tr = `/newsdetail?id=${url}`
+                break;
+                case 5:
+                    tr = `/studydetail1?id=${url}`
+                break;
+                }
+                this.$router.push(`${tr}`)
+            }
+
         },
         created(){
             this.getData()
@@ -168,7 +189,7 @@
 }
 .nav {
     height: 3.79rem;
-    background: url('../assets/bt_bg.png') no-repeat;
+    background: url('../../assets/bt_bg.png') no-repeat;
     background-size: 100%;
     
     .nav-wrap {
@@ -200,7 +221,7 @@
 }
 .footer-nav {
     height: 3.16rem;
-    background: url('../assets/tese.png') no-repeat;
+    background: url('../../assets/tese.png') no-repeat;
     background-size: 100%;
     margin-bottom: 1.38rem;
     .footer-nav-wrap {
@@ -208,12 +229,10 @@
         .f-n-l {
             flex: 1;
             height: 3.16rem;
-            /* background: #f00; */
         }
         .f-n-r {
             flex: 2;
             height: 3.16rem;
-            /* background: #0f0; */
             ul {
                 height: 100%;
                 li {
