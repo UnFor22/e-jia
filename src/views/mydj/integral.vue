@@ -6,7 +6,7 @@
                 <span>67.5</span>
             </div>
             <div class="integral">
-                <router-link to='/integraldetail'>
+                <router-link :to='$store.state.token ? "/integraldetail" : "/login"'>
                     <img src="/static/imgs/lxjf.png" alt="" class="img-left fll">
                     <span class="fll">积分明细</span>
                     <img src="/static/imgs/right.png" alt="" class="img-right">
@@ -79,22 +79,7 @@
 
 <script>
     export default {
-        // data() {
-        //     return {
-        //         formData: {}
-        //     }
-        // },
-        // methods:{
-        //     getData(){
-        //         this.$axios.get('/user/userInfo.do').then(res => {
-        //             // console.log(res)
-        //             this.formData = res.data
-        //         })
-        //     }
-        // },
-        // created(){
-        //     this.getData()
-        // }
+        
     }
 </script>
 

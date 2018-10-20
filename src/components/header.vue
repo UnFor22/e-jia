@@ -24,6 +24,7 @@
             float: left;
             color: #fff;
             margin-left: 0.2rem;  
+            font-size: 16px;
         }
         span {
             color: #fff;

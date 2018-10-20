@@ -17,34 +17,34 @@
                     <div class="userimg">
                         <img :src="formData.header" alt="" class="userimg">
                     </div>
-                    <div class="user-title">{{formData.jobRank}}</div>
+                    <div class="user-title">{{formData.username}}</div>
                 </div>
             </div>
 
             <div class="dj-user">
                 <div class="dj-user-item clearfix">
-                    <router-link to='/userinfo'>
+                    <router-link :to='this.token ? "/userinfo" : "/login"'>
                         <img src="/static/imgs/person.png" alt="" class="img-left fll">
                         <span class="fll">个人信息</span>
                         <img src="/static/imgs/right.png" alt="" class="img-right">
                     </router-link>
                 </div>
                 <div class="dj-user-item clearfix">
-                    <router-link to='/integral'>
+                    <router-link :to='this.token ? "/integral" : "/login"'>
                         <img src="/static/imgs/icon_01.png" alt="" class="img-left fll">
                         <span class="fll">个人量化积分</span>
                         <img src="/static/imgs/right.png" alt="" class="img-right">
                     </router-link>
                 </div>
                 <div class="dj-user-item clearfix">
-                    <router-link to='/'>
+                    <router-link :to='this.token ? "/changepassword" : "/login"'>
                         <img src="/static/imgs/xgmm.png" alt="" class="img-left fll">
                         <span class="fll">修改密码</span>
                         <img src="/static/imgs/right.png" alt="" class="img-right">  
                     </router-link> 
                 </div>
                 <div class="dj-user-item clearfix">
-                    <router-link to='/'>
+                    <router-link :to='this.token ? "/pay" : "/login"'>
                         <img src="/static/imgs/icon3.png" alt="" class="img-left fll">
                         <span class="fll">党费缴纳</span>
                         <img src="/static/imgs/right.png" alt="" class="img-right">  
@@ -66,12 +66,15 @@
         data(){
             return {
                 formData:{},
-                userinfo:{}
+                userinfo:{},
+                token:''
             }
         },
         methods:{
             getData(){
                 this.formData = this.$store.state.userinfo
+                this.token = this.$store.state.token
+                console.log(this.formData)
             },
             handleLogout(){
                 this.$store.commit('IS_LOGIN',this.userinfo)
@@ -109,7 +112,8 @@
             padding: 0.48rem 0 0.20rem;
             text-align: center;
             background: #c50206;
-            width: 100%;;
+            width: 100%;
+            
             .userimg {
                 width: 1.26rem;
                 height: 1.26rem;

@@ -23,7 +23,7 @@ instance.interceptors.request.use((config) => {
 const xhr = {
     get(url,data,config){
         return new Promise((resolve,reject) => {
-            console.log(store.state)
+            // console.log(store.state)
             const token = store.state.token
             let computedConfig = {
                 ...config
@@ -38,10 +38,10 @@ const xhr = {
             // console.log(token)
             // console.log(computedConfig)
             instance.get(url, {params: data,...computedConfig}).then(res => {
-                if(res.data.code != 1){
-                    // MessageBox('提示', '登录状态失效，正在跳转登录页');
-                    router.push('/login')
-                }
+                // if(res.data.code != 1){
+                //     // MessageBox('提示', '登录状态失效，正在跳转登录页');
+                //     router.push('/login')
+                // }
                 resolve(res.data)
             }).catch(err => {
                 reject(err)

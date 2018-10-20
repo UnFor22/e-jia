@@ -32,9 +32,12 @@ const components = {
   Userinfo:()=>import ('@/views/mydj/userinfo.vue'),
   Integral:()=>import ('@/views/mydj/integral.vue'),
   Integraldetail:()=>import ('@/views/mydj/integraldetail.vue'),
+  Changepassword:()=>import ('@/views/mydj/changepassword.vue'),
+  Pay:()=>import ('@/views/mydj/pay.vue'),
 }
 
 export default new Router({
+  
   routes: [
     {
       path: '/',
@@ -260,6 +263,8 @@ export default new Router({
       meta: {
         title: '个人量化积分'
       }
+      
+      
     },
     {
       path:'/integraldetail',
@@ -267,6 +272,22 @@ export default new Router({
       component: components.Integraldetail,
       meta: {
         title: '积分明细'
+      }
+    },
+    {
+      path:'/changepassword',
+      name: 'changepassword',
+      component: components.Changepassword,
+      meta: {
+        title: '修改密码'
+      }
+    },
+    {
+      path:'/pay',
+      name: 'pay',
+      component: components.Pay,
+      meta: {
+        title: '党费缴纳'
       }
     },
    
