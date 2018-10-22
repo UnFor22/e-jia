@@ -34,6 +34,7 @@ const components = {
   Integraldetail:()=>import ('@/views/mydj/integraldetail.vue'),
   Changepassword:()=>import ('@/views/mydj/changepassword.vue'),
   Pay:()=>import ('@/views/mydj/pay.vue'),
+  Edituser:()=>import ('@/views/mydj/edituser.vue'),
 }
 
 export default new Router({
@@ -288,6 +289,14 @@ export default new Router({
       component: components.Pay,
       meta: {
         title: '党费缴纳'
+      }
+    },
+    {
+      path:'/edituser',
+      name: 'edituser',
+      component: components.Edituser,
+      meta: {
+        title: '修改个人信息'
       }
     },
    

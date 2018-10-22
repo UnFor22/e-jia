@@ -3,7 +3,7 @@
         <div class="header">   
             <i class="iconfont icon-zuojiantou" @click="$router.back()"></i>
             <span class="title">个人信息</span>
-            <span class="bianji">编辑</span>
+            <span class="bianji" @click="handlEdit">编辑</span>
         </div>
         <div class="user-wrap">
             <div class="user-item clearfix">
@@ -83,6 +83,9 @@
                     // console.log(res)
                     this.formData = res.data        
                 })
+            },
+            handlEdit(){
+                this.$router.push('/edituser')
             }
         },
         created(){
@@ -91,7 +94,7 @@
     }
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss'>
 .header {
     height: 0.88rem;
     background: #c50206;
@@ -106,7 +109,7 @@
     .iconfont {
         float: left;
         color: #fff; 
-        
+        font-size: 18px;
     }
     .title {
         color: #fff;
