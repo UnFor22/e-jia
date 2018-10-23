@@ -28,8 +28,10 @@ const store = new Vuex.Store({
     mutations: {
       IS_LOGIN(state,userinfo){
         state.userinfo = userinfo.data
-        state.token = userinfo.token
-      }
+      },
+      // SAVE_TOKEN(state,userinfo){
+      //   state.token = userinfo.token
+      // }
     },
     plugins: [createPersistedState({
         storage: {

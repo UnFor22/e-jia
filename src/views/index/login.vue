@@ -4,7 +4,7 @@
         <heads></heads>
         <div class="login-logo">
             <div class="login-logo-wrap">
-                <img src="/static/logo.png" style="height:1rem" alt="">
+                <img src="../../assets/logo.png" style="height:1rem" alt="">
             </div>
         </div>
         <form action="" method="post" class="login-form" >
@@ -30,9 +30,10 @@
             handleLogin(){
                 this.$axios.post('/user/userLogin.do',this.formData).then(res => {
                     if(res.code == 1){
-                        console.log(res)
+                        // console.log(res)
                         this.$store.commit('IS_LOGIN',res)
-                        // console.log(this.$store.state.userinfo)
+                        localStorage.setItem("token",res.token)
+                        // console.log(localStorage)
                         // this.$MessageBox({title: '提示', message: '登录成功', showConfirmButton:false});
                         setTimeout(()=>{
                             this.$router.push('/mydj')
@@ -58,12 +59,11 @@
         height: 100%;
 
         .login-logo {
-            margin: 0.9rem;
 
             .login-logo-wrap { 
                 img {
                     display: block;
-                    margin: 0 auto;
+                    margin: 1.4rem auto 0.9rem;
                 }
             }
         }

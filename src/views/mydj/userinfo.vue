@@ -1,9 +1,11 @@
 <template>
     <div>
         <div class="header">   
-            <i class="iconfont icon-zuojiantou" @click="$router.back()"></i>
-            <span class="title">个人信息</span>
-            <span class="bianji" @click="handlEdit">编辑</span>
+            <div class="header-wrap clearfix">
+                <i class="iconfont icon-zuojiantou fll" @click="$router.back()"></i>
+                <span class="title">个人信息</span>
+                <span class="bianji flr" @click="handlEdit">编辑</span>
+            </div>
         </div>
         <div class="user-wrap">
             <div class="user-item clearfix">
@@ -81,7 +83,7 @@
             getData(){
                 this.$axios.get('/user/userInfo.do').then(res => {
                     // console.log(res)
-                    this.formData = res.data        
+                    this.formData = res.data     
                 })
             },
             handlEdit(){
@@ -98,31 +100,31 @@
 .header {
     height: 0.88rem;
     background: #c50206;
-    line-height: 0.88rem;
-    text-align: center;
+    line-height: 0.88rem; 
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 998;
     padding: 0 0.2rem;
-    .iconfont {
-        float: left;
-        color: #fff; 
-        font-size: 18px;
-    }
-    .title {
+    .header-wrap {
         color: #fff;
         font-size: 18px;
-        font-weight: 400;
-        vertical-align: top;
-    }
-    .bianji {
-        float: right;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 300;
-    }
+        text-align: center;
+        .iconfont {
+            font-size: 18px;
+        }
+        .title {
+            font-weight: 400;
+            // vertical-align: top;
+            // width: 4rem;
+        }
+        .bianji {
+            font-weight: 300;
+            color: #fff;
+            float: right;
+        }
+    } 
 }
 .user-wrap{
     margin-top: 0.88rem;
@@ -133,7 +135,7 @@
         border-bottom: 1px solid #ddd;
         vertical-align: middle;
         img {
-            height: 0.5rem;
+            height: 0.6rem;
             vertical-align: middle;
         }
         span {

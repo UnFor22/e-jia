@@ -12,30 +12,39 @@
                     <img src="/static/imgs/right.png" alt="" class="img-right flr">  
                 </div> 
             </div>
-            <div class="dj-user-item clearfix" @click="handlealert">
+            <div class="dj-user-item clearfix" @click="handlealert1">
                 <i class="iconfont icon-zhifubao img-left fll"></i> 
                 <span class="fll">支付宝</span>
                 <img src="/static/imgs/right.png" alt="" class="img-right flr">  
+            </div>
+            <div :class="ali ? 'isshow' : 'notshow'" @click="handlehidden">
+                <img src="../../assets/alipay.png" alt="">
+            </div>
+            <div :class="wechat ? 'isshow' : 'notshow'" @click="handlehidden">
+                <img src="../../assets/wechat.png" alt="">
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import { MessageBox } from 'mint-ui'
     export default {
         data() {
             return {
-                MessageBox:{
-                    message: 'url("../../assets/alipay.png")',
-                    // img: url("../../assets/alipay.png"),
-                    showConfirmButton: false
-                }
+                ali: false,
+                wechat: false
             }
         },
         methods: {
             handlealert(){
-                MessageBox(this.MessageBox)
+                this.wechat = true
+            },
+            handlealert1(){
+                this.ali = true
+            },
+            handlehidden(){
+                this.ali = false
+                this.wechat = false
             }
         }
         
@@ -75,6 +84,22 @@
             height: 0.4rem;
             margin: 0.4rem 0;
         }
+    }
+    .isshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba($color: #000000, $alpha: 0.3);
+        img {
+            display: block;
+            width: 6.8rem;
+            margin:  2.2rem auto 0;
+        }
+    }
+    .notshow{
+        display: none;
     }
 }
 </style>

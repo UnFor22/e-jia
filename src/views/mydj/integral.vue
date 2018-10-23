@@ -6,7 +6,7 @@
                 <span>67.5</span>
             </div>
             <div class="integral">
-                <router-link :to='$store.state.token ? "/integraldetail" : "/login"'>
+                <router-link :to='this.token ? "/integraldetail" : "/login"'>
                     <img src="/static/imgs/lxjf.png" alt="" class="img-left fll">
                     <span class="fll">积分明细</span>
                     <img src="/static/imgs/right.png" alt="" class="img-right">
@@ -79,7 +79,11 @@
 
 <script>
     export default {
-        
+        data(){
+            return {
+                token :localStorage.getItem('token')
+            }
+        }
     }
 </script>
 

@@ -7,7 +7,7 @@
         </div>
         <div class="mydj-wrap">
             <div class="dj-userinfo">
-                <router-link to='/login' v-if="!formData.header" class="userwrap">
+                <router-link to='/login' v-if="!this.token" class="userwrap">
                     <div class="userimg">
                          <img src="/static/imgs/yuan.png" alt="" class="userimg" >
                     </div>
@@ -51,7 +51,7 @@
                     </router-link> 
                 </div>
             </div>
-            <div class="logout" v-if="formData.header">
+            <div class="logout" v-if="this.token">
                 <input type="button" value="退出登录" class="logout-button" @click="handleLogout">
             </div>
             <div v-else></div>
@@ -72,13 +72,16 @@
         },
         methods:{
             getData(){
-                this.formData = this.$store.state.userinfo
-                this.token = this.$store.state.token
-                console.log(this.formData)
+                this.$axios.get('/user/userInfo.do').then(res =>{
+                    this.formData = res.data
+                })
+                this.token = localStorage.getItem('token')
+                // console.log(this.formData)
+                // console.log(localStorage.getItem('token'))  
             },
             handleLogout(){
                 this.$store.commit('IS_LOGIN',this.userinfo)
-                this.$store.state.token=''
+                localStorage.removeItem('token')
                 this.$router.push('/login')
             }
         },

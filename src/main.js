@@ -10,9 +10,10 @@ import './assets/iconfont/iconfont.css'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import store from './store'
-import { MessageBox } from 'mint-ui'
+import { InfiniteScroll } from 'mint-ui'
 
 Vue.use(MintUI)
+Vue.use(InfiniteScroll)
 // Vue.use(MessageBox)
 
 Vue.prototype.$axios = $axios

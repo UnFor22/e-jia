@@ -1,6 +1,8 @@
 <template>
-    <div class="new-1">
-        <div class="news-wrap" v-for="item in tableData" :key="item.newsId">
+    <div v-infinite-scroll="loadMore"
+        :infinite-scroll-disabled="loading"
+        infinite-scroll-distance="300" infinite-scroll-immediate-check=false class="new-1">
+        <div class="news-wrap"  v-for="item in tableData" :key="item.newsId">
             <div class="news-item clearfix" @click="handleClick(item.newsId)">
                 <div class="news-item-left fll">
                     <img :src="item.pic" alt="">
@@ -34,6 +36,9 @@
                 sr: '',
                 rqr: '',
                 tr: '',
+                page: 1,
+                rows: 10,
+                loading: true
             }
         },
         methods: {
@@ -84,6 +89,18 @@
             },
             handleClick(newsId){
                 this.$router.push(`${this.tr}?id=${newsId}`)
+            },
+            loadMore() {
+                this.loading = true;
+                setTimeout(() => {
+                    this.$axios.get(`${this.rqr}&page=${this.page+1}&rows=${this.rows}`).then(res => {
+                        this.page+=1
+                        // console.log(res)
+                        this.tableData = [...this.tableData,...res.rows]
+                        // console.log(this.tableData)
+                    })     
+                    this.loading = false;
+                }, 2500);
             }
         },
         created(){
