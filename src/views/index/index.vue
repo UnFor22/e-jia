@@ -32,7 +32,7 @@
                             </router-link>
                         </div>
                         <div class="nav-item">
-                            <router-link to="/cloudinter">
+                            <router-link to="/">
                                 <img src="../../assets/icon_03.png" alt="">
                                 <span>党员云互动</span>
                             </router-link>

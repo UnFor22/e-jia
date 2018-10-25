@@ -10,7 +10,7 @@ import './assets/iconfont/iconfont.css'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import store from './store'
-import { InfiniteScroll } from 'mint-ui'
+import { InfiniteScroll,Spinner } from 'mint-ui'
 
 Vue.use(MintUI)
 Vue.use(InfiniteScroll)
@@ -22,6 +22,7 @@ Vue.component('heads', heads);
 Vue.component('tabs', tabs);
 Vue.component('contents', contents);
 Vue.component('mains', mains);
+Vue.component(Spinner.name, Spinner);
 
 /* eslint-disable no-new */
 new Vue({

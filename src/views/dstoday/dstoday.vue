@@ -1,44 +1,63 @@
 <template>
     <div class="dstoday">
         <heads></heads>
-        <h1>党史上的今天</h1>
         <div class="dstoday-wrap">
-            <div class="ds-item">
-                <!-- <h2></h2>
-                <p></p> -->
-                
+            <div class="ds-item" v-html="content">    
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import getUrl from '../../utils/getToday.js'
+import cheerio from 'cheerio'
     export default {
         data () {
             return {
-                formData: [
-
-                ]
+                content: ''
             }
         },
-        // methods: {
-        //     getData(){
-        //         let p1 = /(<h2>)\s+(<\/h2>)/m
-        //         let p2 = /(\<p\>)\s+(\<\/p\>)/m
-        //         this.$axios.get('/proxy/proxy.do?url=http:%2F%2Fcpc.people.com.cn%2FGB%2F64162%2F64165%2F70486%2F70503%2Findex.html').then(res=>{
-        //             console.log(res)
-        //             // this.formData= [...p1.exec(res)]
-        //             console.log(p1.exec(res))
-        //             console.log(p2.exec(res))
-        //         })
-        //     }
-        // },
-        // created(){
-        //     this.getData()
-        // }
+        methods: {
+            getData(){
+                let month = new Date().getMonth() + 1
+                let day = new Date().getDate()
+                month = month >= 10 ? month + '' : '0'+ month
+                day = day >= 10 ? day + '' : '0' + day
+                let url = getUrl(month,day)
+                this.$axios.get('/proxy/proxy.do',url).then(res => {
+                    // console.log(res)
+                    const $ = cheerio.load(res)
+                    this.content = $('.p1_02').html()  
+                })
+            }
+        },
+        created(){
+            this.getData()
+        }
     }
 </script>
 
-<style scoped>
-
+<style lang='scss'>
+.dstoday-wrap {
+    margin-top: 0.88rem;
+    padding: 0.2rem;
+    color: #000;
+    
+    h1 {
+        font-size: 24px;
+        font-weight: 500;
+        text-align: center;
+    }
+    h2 {
+        margin: 0.3rem 0 0.2rem;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    p {
+        line-height: 2;
+        font-size: 14px;
+        text-indent: 2em;
+        margin-bottom: 0.1rem;
+    }
+}
 </style>

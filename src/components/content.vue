@@ -1,7 +1,9 @@
 <template>
+<div class="content">
     <div v-infinite-scroll="loadMore"
-        :infinite-scroll-disabled="loading"
-        infinite-scroll-distance="300" infinite-scroll-immediate-check=false class="new-1">
+        infinite-scroll-disabled="loading"
+        infinite-scroll-distance="260" infinite-scroll-immediate-check=false class="new-1">
+        <mt-spinner :class="!this.load1 ? 'loading-top' : 'no-loading'" id="top" type="fading-circle" color="#26a2ff" :size="60"></mt-spinner>
         <div class="news-wrap"  v-for="item in tableData" :key="item.newsId">
             <div class="news-item clearfix" @click="handleClick(item.newsId)">
                 <div class="news-item-left fll">
@@ -21,10 +23,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-        </div>
+            </div>  
+        </div>     
     </div>
+    <div class="dixian" v-if="this.loadimg < 10">
+        <span>已经没有更多内容了</span>
+    </div>
+    <div class='loading' v-else>
+        <mt-spinner :class="this.loading ? 'loading-deep' : 'no-loading'" id="top" type="fading-circle" :size="30"></mt-spinner>
+    </div>
+</div>
+    
 </template>
 
 <script>
@@ -36,9 +45,11 @@
                 sr: '',
                 rqr: '',
                 tr: '',
+                loadimg: 10,
                 page: 1,
                 rows: 10,
-                loading: true
+                loading: false,
+                load1: false,
             }
         },
         methods: {
@@ -78,13 +89,13 @@
                     this.rqr = '/news/newsList.do?type=2'
                     this.tr = '/noticedetail'
                 break;
-                
                 }
-            
                 this.$axios.get(`${this.rqr}`).then(res => {
-                    console.log(res)
+                    // console.log(res)
                     this.tableData = res.rows
+                    this.load1 = true
                     // this.newsId = res.rows.newsId
+
                 })
             },
             handleClick(newsId){
@@ -95,24 +106,37 @@
                 setTimeout(() => {
                     this.$axios.get(`${this.rqr}&page=${this.page+1}&rows=${this.rows}`).then(res => {
                         this.page+=1
-                        // console.log(res)
+                        this.loadimg = res.rows.length
+                        console.log(res)
                         this.tableData = [...this.tableData,...res.rows]
                         // console.log(this.tableData)
                     })     
                     this.loading = false;
-                }, 2500);
+                }, 1500);
             }
         },
         created(){
             this.getData()
-        }
+        },
+        
     }
 </script>
 
 <style scoped lang='scss'>
+.content{
+    margin-top: 0.88rem;
     .new-1 {
-        margin-top: 0.88rem;
+        .loading-top {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .no-loading{
+            display: none;
+        }
         .news-wrap {
+            
             .news-item {
                 display: block;
                 padding: 0.2rem;
@@ -148,6 +172,27 @@
                     }
                 }
             }
+        }   
+    }
+    .loading {
+        position: relative;
+        height: 0.6rem;
+        .loading-deep {
+            position: absolute;
+            bottom: 0;
+            left: 3.45rem;
+        }
+        .no-loading {
+            display: none;
         }
     }
+    .dixian {
+        font-size: 14px;
+        color: #666;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        text-align: center;
+    }
+}
+    
 </style>
